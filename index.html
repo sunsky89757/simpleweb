@@ -6,41 +6,43 @@
 <title>Responsive Centered Page</title>
 <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
 <style>
- body, html {
+body, html {
   margin: 0;
   padding: 0;
-  min-height: 100%; /* Ensure the minimum height is full screen */
+  min-height: 100%;
   background: #f7f7f7;
 }
 
 .container {
-  width: calc(100% - 40px); /* This will take the full width minus the padding on both sides */
-  max-width: 1200px;
   padding: 20px;
   box-sizing: border-box;
-  margin: 0 auto; /* Center the container */
+  margin: 0 auto;
+  max-width: 1200px;
+  width: 100%; /* 宽度设置为100%，通过padding来调整内部间距 */
 }
 
-@media (min-width: 1200px) {
-  .container {
-    width: 1200px; /* Fixed width for larger screens */
-  }
-}
-
-/* Additional styling for aesthetics */
 .content {
   background: white;
-  padding: 40px;
+  padding: 20px; /* 可以根据需要调整内边距 */
   box-shadow: 0 4px 8px rgba(0,0,0,0.1);
   border-radius: 8px;
-  width: 100%; /* Ensure content takes the full width of the container */
+  width: auto; /* 确保内容宽度自适应 */
 }
 
-/* Ensure images do not overflow their container */
 .content img {
   max-width: 100%;
   height: auto;
 }
+
+@media (min-width: 1200px) {
+  .container {
+    width: 1200px; /* 对于大屏幕，固定容器宽度 */
+  }
+  .content {
+    padding: 40px; /* 对于大屏幕，增加内边距 */
+  }
+}
+
 </style>
 
 </head>
