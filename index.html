@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Responsive Centered Page</title>
+<title>Responsive Centered Page with Image Modal</title>
 <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
 <style>
 body, html {
@@ -18,33 +18,78 @@ body, html {
   box-sizing: border-box;
   margin: 0 auto;
   max-width: 1200px;
-  width: 100%; /* 宽度设置为100%，通过padding来调整内部间距 */
+  width: 100%;
 }
 
 .content {
   background: white;
-  padding: 20px; /* 可以根据需要调整内边距 */
+  padding: 20px;
   box-shadow: 0 4px 8px rgba(0,0,0,0.1);
   border-radius: 8px;
-  width: auto; /* 确保内容宽度自适应 */
+  width: auto;
 }
 
 .content img {
   max-width: 100%;
   height: auto;
+  cursor: pointer; /* Add cursor pointer to indicate clickable images */
+}
+
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0,0,0,0.9);
+}
+
+.modal-content {
+  margin: auto;
+  display: block;
+  width: 80%;
+  max-width: 700px;
+}
+
+.close {
+  position: absolute;
+  top: 15px;
+  right: 35px;
+  color: #f1f1f1;
+  font-size: 40px;
+  font-weight: bold;
+  transition: 0.3s;
+}
+
+.close:hover,
+.close:focus {
+  color: #bbb;
+  cursor: pointer;
+}
+
+#caption {
+  margin: auto;
+  display: block;
+  width: 80%;
+  max-width: 700px;
+  text-align: center;
+  color: #ccc;
+  padding: 10px 0;
+  height: 150px;
 }
 
 @media (min-width: 1200px) {
   .container {
-    width: 1200px; /* 对于大屏幕，固定容器宽度 */
+    width: 1200px;
   }
   .content {
-    padding: 40px; /* 对于大屏幕，增加内边距 */
+    padding: 40px;
   }
 }
-
 </style>
-
 </head>
 <body>
 
@@ -52,6 +97,13 @@ body, html {
   <div class="content" id="markdown-content">
     <!-- Markdown内容将在这里以HTML形式显示 -->
   </div>
+</div>
+
+<!-- 图片模态框 -->
+<div id="imageModal" class="modal">
+  <span class="close">&times;</span>
+  <img class="modal-content" id="img01">
+  <div id="caption"></div>
 </div>
 
 <script type="text/x-markdown" id="markdown">
@@ -70,7 +122,6 @@ body, html {
 注意：本后台暂不开放注册，如需使用请联系客服。  
 客服微信：ACG508
 ![设置方法](https://pic.imgdb.cn/item/65e47c7c9f345e8d03a1c1a4.jpg)
-
 </script>
 
 <script>
@@ -82,6 +133,33 @@ body, html {
 
   // 将转换后的HTML设置到内容区域
   document.getElementById('markdown-content').innerHTML = html;
+
+  // 获取模态框元素
+  var modal = document.getElementById("imageModal");
+  var modalImg = document.getElementById("img01");
+  var captionText = document.getElementById("caption");
+  var span = document.getElementsByClassName("close")[0];
+
+  // 为每张图片添加点击事件
+  document.querySelectorAll('.content img').forEach(img => {
+    img.onclick = function(){
+      modal.style.display = "block";
+      modalImg.src = this.src;
+      captionText.innerHTML = this.alt;
+    }
+  });
+
+  // 点击 <span> (x), 关闭模态框
+  span.onclick = function() { 
+    modal.style.display = "none";
+  }
+
+  // 点击模态框外部时也关闭模态框
+  modal.onclick = function(event) {
+    if (event.target == modal) {
+      modal.style.display = "none";
+    }
+  }
 </script>
 
 </body>
