@@ -6,52 +6,41 @@
 <title>Responsive Centered Page</title>
 <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
 <style>
-body, html {
+ body, html {
   margin: 0;
   padding: 0;
-  min-height: 100%;
+  min-height: 100%; /* Ensure the minimum height is full screen */
   background: #f7f7f7;
 }
 
 .container {
-  width: calc(100% - 40px);
+  width: calc(100% - 40px); /* This will take the full width minus the padding on both sides */
   max-width: 1200px;
   padding: 20px;
   box-sizing: border-box;
-  margin: 0 auto;
+  margin: 0 auto; /* Center the container */
 }
 
 @media (min-width: 1200px) {
   .container {
-    width: 1200px;
+    width: 1200px; /* Fixed width for larger screens */
   }
 }
 
+/* Additional styling for aesthetics */
 .content {
   background: white;
   padding: 40px;
   box-shadow: 0 4px 8px rgba(0,0,0,0.1);
   border-radius: 8px;
-  width: 100%;
-  overflow-x: hidden; /* 防止横向溢出 */
+  width: 100%; /* Ensure content takes the full width of the container */
 }
 
+/* Ensure images do not overflow their container */
 .content img {
   max-width: 100%;
   height: auto;
 }
-
-.content * {
-  max-width: 100%;
-  box-sizing: border-box;
-}
-
-.content table {
-  width: 100%;
-  display: block;
-  overflow-x: auto;
-}
-
 </style>
 
 </head>
