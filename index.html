@@ -6,43 +6,46 @@
 <title>Responsive Centered Page</title>
 <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
 <style>
-  body, html {
-    margin: 0;
-    padding: 0;
-    height: 100%;
-    display: flex;
-    justify-content: center;
-    background: #f7f7f7;
-  }
+ body, html {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center; /* Added to vertically center the container */
+  background: #f7f7f7;
+}
 
+.container {
+  width: calc(100% - 40px); /* This will take the full width minus the padding on both sides */
+  max-width: 1200px;
+  padding: 20px;
+  box-sizing: border-box;
+  margin-top: 20px; /* 20px top margin */
+  margin-bottom: 20px; /* 20px bottom margin */
+}
+
+@media (min-width: 1200px) {
   .container {
-    width: calc(100% - 40px);
-    max-width: 1200px;
-    padding: 20px;
-    box-sizing: border-box;
-    margin: 20px 0; /* 或者你想要的任何其他值 */
+    width: 1200px; /* Fixed width for larger screens */
   }
+}
 
-  @media (min-width: 1200px) {
-    .container {
-      width: 1200px;
-    }
-  }
+/* Additional styling for aesthetics */
+.content {
+  background: white;
+  padding: 40px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  border-radius: 8px;
+  width: 100%; /* Ensure content takes the full width of the container */
+}
 
-  /* Additional styling for aesthetics */
-  .content {
-    background: white;
-    padding: 40px;
-    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-    border-radius: 8px;
-    width: 100%;
-  }
+/* Ensure images do not overflow their container */
+.content img {
+  max-width: 100%;
+  height: auto;
+}
 
-  /* Ensure images do not overflow their container */
-  .content img {
-    max-width: 100%;
-    height: auto;
-  }
 </style>
 
 </head>
