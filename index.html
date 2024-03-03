@@ -1,12 +1,49 @@
 <!DOCTYPE html>
-<html lang="zh-CN">
+<html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>我的简单页面</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Responsive Centered Page</title>
+<style>
+  body, html {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #f7f7f7;
+  }
+
+  .container {
+    max-width: 100%;
+    padding: 20px;
+    box-sizing: border-box;
+  }
+
+  @media (min-width: 1200px) {
+    .container {
+      max-width: 1200px;
+    }
+  }
+
+  /* Additional styling for aesthetics */
+  .content {
+    background: white;
+    padding: 40px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    border-radius: 8px;
+  }
+</style>
 </head>
 <body>
-    <h1>欢迎来到我的网页！</h1>
-    <p>这是一个简单的HTML页面。</p>
+
+<div class="container">
+  <div class="content">
+    <h1>Welcome to My Responsive Page</h1>
+    <p>This is a centered content area on the page. Resize the browser to see how it adapts!</p>
+  </div>
+</div>
+
 </body>
 </html>
