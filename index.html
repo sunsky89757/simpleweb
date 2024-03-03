@@ -3,38 +3,76 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Markdown in HTML</title>
+<title>Responsive Centered Page</title>
 <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+<style>
+  body, html {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #f7f7f7;
+  }
+
+  .container {
+    width: calc(100% - 40px);
+    max-width: 1200px;
+    padding: 20px;
+    box-sizing: border-box;
+  }
+
+  @media (min-width: 1200px) {
+    .container {
+      width: 1200px;
+    }
+  }
+
+  /* Additional styling for aesthetics */
+  .content {
+    background: white;
+    padding: 40px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    border-radius: 8px;
+    width: 100%;
+  }
+</style>
 </head>
 <body>
 
-<!-- Markdown 内容请放在这里 -->
-<textarea id="markdown" style="display:none;">
-# Welcome to My Page
+<div class="container">
+  <div class="content" id="markdown-content">
+    <!-- Markdown内容将在这里以HTML形式显示 -->
+  </div>
+</div>
 
-This is a paragraph with **bold** text and _italic_ text.
+<script type="text/x-markdown" id="markdown">
+# 公告说明
 
-- List item 1
-- List item 2
-- List item 3
+欢迎使用蛋壳API - 企业专用后台  
+本后台为企业专线，延迟更低！  
+专线接口为 https://api.gptacg.fun  
+官网地址：https://www.gptacg.com  
 
-`Code snippet here`
+后台功能：  
+1. 您可以自行创建与分发API-Key。  
+2. 您可以查询任何一笔消费明细。  
+3. 您可以通过兑换码完成充值，购买兑换码请联系客服。  
 
-[Link](https://example.com)
-</textarea>
-
-<!-- This div will hold the converted HTML from Markdown -->
-<div id="preview"></div>
+注意：本后台暂不开放注册，如需使用请联系客服。  
+客服微信：ACG508
+</script>
 
 <script>
-  // Get the Markdown content from the textarea
-  const markdownContent = document.getElementById('markdown').value;
+  // 获取Markdown文本
+  const markdown = document.getElementById('markdown').innerText;
   
-  // Convert the Markdown to HTML
-  const htmlContent = marked.parse(markdownContent);
+  // 使用marked.js将Markdown转换为HTML
+  const html = marked.parse(markdown);
 
-  // Set the inner HTML of the preview div to the converted HTML
-  document.getElementById('preview').innerHTML = htmlContent;
+  // 将转换后的HTML设置到内容区域
+  document.getElementById('markdown-content').innerHTML = html;
 </script>
 
 </body>
