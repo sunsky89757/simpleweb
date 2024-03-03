@@ -3,56 +3,39 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Responsive Centered Page</title>
-<style>
-  body, html {
-    margin: 0;
-    padding: 0;
-    height: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background: #f7f7f7;
-  }
-
-  .container {
-    max-width: 100%;
-    padding: 20px;
-    box-sizing: border-box;
-  }
-
-  @media (min-width: 1200px) {
-    .container {
-      max-width: 1200px;
-    }
-  }
-
-  /* Additional styling for aesthetics */
-  .content {
-    background: white;
-    padding: 40px;
-    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-    border-radius: 8px;
-  }
-</style>
+<title>Markdown in HTML</title>
+<script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
 </head>
 <body>
 
-<div class="container">
-  <div class="content">
-    <h1>公告说明</h1>
-    <p>欢迎使用蛋壳API - 企业专用后台<br>
-本后台为企业专线，延迟更低！<br>
-专线接口为https://api.gptacg.fun<br>
-官网地址：https://www.gptacg.com<br>
-后台功能：<br>
-1、您可以自行创建与分发API-Key。<br>
-2、您可以查询任何一笔消费明细。<br>
-3、您可以通过兑换码完成充值，购买兑换码请联系客服。<br>
-注意：本后台暂不开放注册，如需使用请联系客服。<br>
-客服微信：ACG508</p>
-  </div>
-</div>
+<!-- Markdown 内容请放在这里 -->
+<textarea id="markdown" style="display:none;">
+# Welcome to My Page
+
+This is a paragraph with **bold** text and _italic_ text.
+
+- List item 1
+- List item 2
+- List item 3
+
+`Code snippet here`
+
+[Link](https://example.com)
+</textarea>
+
+<!-- This div will hold the converted HTML from Markdown -->
+<div id="preview"></div>
+
+<script>
+  // Get the Markdown content from the textarea
+  const markdownContent = document.getElementById('markdown').value;
+  
+  // Convert the Markdown to HTML
+  const htmlContent = marked.parse(markdownContent);
+
+  // Set the inner HTML of the preview div to the converted HTML
+  document.getElementById('preview').innerHTML = htmlContent;
+</script>
 
 </body>
 </html>
